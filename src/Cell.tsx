@@ -2,28 +2,40 @@ import { useState } from "react";
 import "./cell.css";
 
 function Cell(props) {
-  const [isActive, setActive] = useState(false);
-
-  const toggleClass = () => {
-    setActive(!isActive);
-  };
-
-  function handleClick(e) {
-    console.log(e);
-    console.log("The link was clicked.");
-  }
+  const [active, setActive] = useState(false);
+  const [blocked, setBlocked] = useState(false);
 
   function handleMouseEnter() {
-    //setActive(!isActive);
+    if (props.mouseDown && !blocked) {
+      setActive(!active);
+    }
+  }
+
+  function handleMouseDown() {
+    if (!blocked) {
+      setActive(!active);
+    }
+    props.setMouseDown(true);
+  }
+  function handleMouseUp() {
+    props.setMouseDown(false);
+  }
+  function handleDoubleClick() {
+    setBlocked(!blocked);
+    setActive(false);
   }
 
   return (
     <td
-      className="cell"
-      id={isActive ? "selected" : null}
+      className="cell unselectable"
+      id={active ? "selected" : null}
       onMouseEnter={handleMouseEnter}
-      onMouseDown={toggleClass}
-    ></td>
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
+      onDoubleClick={handleDoubleClick}
+    >
+      {blocked ? "x" : null}
+    </td>
   );
 }
 

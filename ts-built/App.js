@@ -1,23 +1,12 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var jsx_runtime_1 = require("react/jsx-runtime");
 require("./App.css");
+var Grid_1 = __importDefault(require("./Grid"));
 function App() {
-    // Build the rows in an array
-    var rows = [];
-    for (var y = 0; y < 10; y++) {
-        // Build the cells in an array
-        var cells = [];
-        for (var x = 0; x < 10; x++) {
-            cells.push((0, jsx_runtime_1.jsx)(Cell, { x: x, y: y }));
-        }
-        // Put them in the row
-        rows.push((0, jsx_runtime_1.jsx)("tr", { children: cells }));
-    }
-    // Return the table
-    return ((0, jsx_runtime_1.jsx)("table", { children: (0, jsx_runtime_1.jsx)("tbody", { children: rows }) }));
-}
-function Cell(props) {
-    return ((0, jsx_runtime_1.jsx)("td", { className: "cell", onClick: function () { return console.log(props.y + " " + props.x); } }));
+    return (0, jsx_runtime_1.jsx)(Grid_1.default, {});
 }
 exports.default = App;
