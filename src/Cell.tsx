@@ -2,18 +2,32 @@ import { useState } from "react";
 import "./cell.css";
 
 function Cell(props) {
-  const [active, setActive] = useState(false);
+  const [selected, setSelected] = useState(false);
   const [blocked, setBlocked] = useState(false);
+
+  function toggleSelectedCell() {
+    if (!selected) {
+      props.setSelectedCells((selectedCells) => [
+        ...selectedCells,
+        props.x + "" + props.y,
+      ]);
+    } else {
+      props.setSelectedCells(
+        props.selectedCells.filter((x) => x !== props.x + "" + props.y)
+      );
+    }
+    setSelected(!selected);
+  }
 
   function handleMouseEnter() {
     if (props.mouseDown && !blocked) {
-      setActive(!active);
+      toggleSelectedCell();
     }
   }
 
   function handleMouseDown() {
     if (!blocked) {
-      setActive(!active);
+      toggleSelectedCell();
     }
     props.setMouseDown(true);
   }
@@ -22,13 +36,13 @@ function Cell(props) {
   }
   function handleDoubleClick() {
     setBlocked(!blocked);
-    setActive(false);
+    setSelected(false);
   }
 
   return (
     <td
       className="cell unselectable"
-      id={active ? "selected" : null}
+      id={selected ? "selected" : null}
       onMouseEnter={handleMouseEnter}
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
