@@ -3,18 +3,31 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var jsx_runtime_1 = require("react/jsx-runtime");
-var react_1 = require("react");
+const jsx_runtime_1 = require("react/jsx-runtime");
+const react_1 = require("react");
 require("./App.css");
-var Grid_1 = __importDefault(require("./Grid"));
-var SubmitButton_1 = __importDefault(require("./SubmitButton"));
-var RefreshButton_1 = __importDefault(require("./RefreshButton"));
+const Grid_1 = __importDefault(require("./Grid"));
+const SubmitButton_1 = __importDefault(require("./SubmitButton"));
+const RefreshButton_1 = __importDefault(require("./RefreshButton"));
+const GenerateSolutionButton_1 = __importDefault(require("./GenerateSolutionButton"));
 function App() {
-    var _a = (0, react_1.useState)([]), selectedCells = _a[0], setSelectedCells = _a[1];
-    var _b = (0, react_1.useState)([
+    const [selectedCells, setSelectedCells] = (0, react_1.useState)([]);
+    const [solution, setSolution] = (0, react_1.useState)([
+        "310",
+        "311",
+        "312",
+        "33",
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+    ]);
+    const [helpNumbers, setHelpNumbers] = (0, react_1.useState)([
         "     21   21  ",
         "   293021903",
-        "   21381i23219",
+        "   2138123219",
         " 2323",
         "142232",
         "123",
@@ -25,7 +38,7 @@ function App() {
         "12",
         "12",
         "12",
-    ]), helpNumbers = _b[0], setHelpNumbers = _b[1];
-    return ((0, jsx_runtime_1.jsxs)("div", { children: [(0, jsx_runtime_1.jsx)(Grid_1.default, { selectedCells: selectedCells, setSelectedCells: setSelectedCells, helpNumbers: helpNumbers }), (0, jsx_runtime_1.jsx)(SubmitButton_1.default, { selectedCells: selectedCells }), (0, jsx_runtime_1.jsx)(RefreshButton_1.default, {})] }));
+    ]);
+    return ((0, jsx_runtime_1.jsxs)("div", { children: [(0, jsx_runtime_1.jsx)(Grid_1.default, { selectedCells: selectedCells, setSelectedCells: setSelectedCells, helpNumbers: helpNumbers }), (0, jsx_runtime_1.jsx)(SubmitButton_1.default, { selectedCells: selectedCells, solution: solution }), (0, jsx_runtime_1.jsx)(RefreshButton_1.default, {}), (0, jsx_runtime_1.jsx)(GenerateSolutionButton_1.default, { selectedCells: selectedCells })] }));
 }
 exports.default = App;

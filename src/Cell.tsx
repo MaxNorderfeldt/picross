@@ -21,7 +21,11 @@ function Cell(props) {
 
   function handleMouseEnter() {
     if (props.mouseDown && !blocked) {
-      toggleSelectedCell();
+      setSelected(true);
+      props.setSelectedCells((selectedCells) => [
+        ...selectedCells,
+        props.x + "" + props.y,
+      ]);
     }
   }
 
