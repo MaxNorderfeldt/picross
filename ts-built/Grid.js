@@ -9,21 +9,31 @@ const Cell_1 = __importDefault(require("./Cell"));
 const HelpNumber_1 = __importDefault(require("./HelpNumber"));
 function Grid(props) {
     const [mouseDown, setMouseDown] = (0, react_1.useState)(false);
+    (0, react_1.useEffect)(() => {
+        document.addEventListener("mousedown", onMouseDown);
+        document.addEventListener("mouseup", onMouseUp);
+    }, []);
+    function onMouseDown() {
+        setMouseDown(true);
+    }
+    function onMouseUp() {
+        setMouseDown(false);
+    }
     // Build the rows in an array
     let rows = [];
     for (let y = 0; y < 13; y++) {
         // Build the cells in an array
-        const cells = [];
+        let cells = [];
         for (let x = 0; x < 13; x++)
             if (x > 2 && y > 2) {
-                cells.push((0, jsx_runtime_1.jsx)(Cell_1.default, { setMouseDown: setMouseDown, mouseDown: mouseDown, x: x, y: y, setSelectedCells: props.setSelectedCells, selectedCells: props.selectedCells }));
+                cells.push((0, jsx_runtime_1.jsx)(Cell_1.default, { x: x, y: y, setSelectedCells: props.setSelectedCells, selectedCells: props.selectedCells, mouseDown: mouseDown }, x + "" + y));
             }
             else {
                 let helpnumber = props.helpNumbers[y].charAt(x);
-                cells.push((0, jsx_runtime_1.jsx)(HelpNumber_1.default, { helpNumber: helpnumber, x: x }));
+                cells.push((0, jsx_runtime_1.jsx)(HelpNumber_1.default, { helpNumber: helpnumber, x: x }, x + "" + y));
             }
         // Put them in the row
-        rows.push((0, jsx_runtime_1.jsx)("tr", { children: cells }));
+        rows.push((0, jsx_runtime_1.jsx)("tr", { children: cells }, y));
     }
     // Return the table
     return ((0, jsx_runtime_1.jsx)("table", { children: (0, jsx_runtime_1.jsx)("tbody", { children: rows }) }));

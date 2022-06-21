@@ -5,8 +5,10 @@ function SubmitButton(props) {
     return ((0, jsx_runtime_1.jsx)("button", Object.assign({ onClick: () => checkResult(props.solution, props.selectedCells) }, { children: "Submit" })));
 }
 function checkResult(solution, selectedCells) {
+    console.log(solution);
+    console.log(selectedCells);
     if (solution.length == selectedCells.length) {
-        if (solution.toString() === selectedCells.sort().toString()) {
+        if (solution.sort().toString() === selectedCells.sort().toString()) {
             console.log(true);
         }
         else {

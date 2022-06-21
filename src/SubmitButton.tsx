@@ -7,8 +7,10 @@ function SubmitButton(props) {
 }
 
 function checkResult(solution, selectedCells) {
+  console.log(solution);
+  console.log(selectedCells);
   if (solution.length == selectedCells.length) {
-    if (solution.toString() === selectedCells.sort().toString()) {
+    if (solution.sort().toString() === selectedCells.sort().toString()) {
       console.log(true);
     } else {
       console.log("second false");

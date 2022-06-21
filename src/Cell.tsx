@@ -7,25 +7,30 @@ function Cell(props) {
 
   function toggleSelectedCell() {
     if (!selected) {
-      props.setSelectedCells((selectedCells) => [
-        ...selectedCells,
-        props.x + "" + props.y,
-      ]);
+      selectCell();
     } else {
-      props.setSelectedCells(
-        props.selectedCells.filter((x) => x !== props.x + "" + props.y)
-      );
+      unselelectCell();
     }
-    setSelected(!selected);
+  }
+
+  function selectCell() {
+    props.setSelectedCells((selectedCells) => [
+      ...selectedCells,
+      props.x + "" + props.y,
+    ]);
+    setSelected(true);
+  }
+
+  function unselelectCell() {
+    props.setSelectedCells(
+      props.selectedCells.filter((x) => x !== props.x + "" + props.y)
+    );
+    setSelected(false);
   }
 
   function handleMouseEnter() {
-    if (props.mouseDown && !blocked) {
-      setSelected(true);
-      props.setSelectedCells((selectedCells) => [
-        ...selectedCells,
-        props.x + "" + props.y,
-      ]);
+    if (props.mouseDown && !blocked && !selected) {
+      selectCell();
     }
   }
 
@@ -33,14 +38,11 @@ function Cell(props) {
     if (!blocked) {
       toggleSelectedCell();
     }
-    props.setMouseDown(true);
   }
-  function handleMouseUp() {
-    props.setMouseDown(false);
-  }
+
   function handleDoubleClick() {
     setBlocked(!blocked);
-    setSelected(false);
+    unselelectCell();
   }
 
   return (
@@ -49,7 +51,6 @@ function Cell(props) {
       id={selected ? "selected" : null}
       onMouseEnter={handleMouseEnter}
       onMouseDown={handleMouseDown}
-      onMouseUp={handleMouseUp}
       onDoubleClick={handleDoubleClick}
     >
       {blocked ? "x" : null}
