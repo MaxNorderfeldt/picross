@@ -37,6 +37,9 @@ function Grid(props) {
         );
       } else {
         let helpnumber = props.helpNumbers[y].charAt(x);
+        if (helpnumber !== " ") {
+          helpnumber = Number(helpnumber) + 1;
+        }
         cells.push(
           <HelpNumber key={x + "" + y} helpNumber={helpnumber} x={x} />
         );

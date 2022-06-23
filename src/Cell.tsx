@@ -16,14 +16,14 @@ function Cell(props) {
   function selectCell() {
     props.setSelectedCells((selectedCells) => [
       ...selectedCells,
-      props.x + "" + props.y,
+      props.x + "." + props.y,
     ]);
     setSelected(true);
   }
 
   function unselelectCell() {
     props.setSelectedCells(
-      props.selectedCells.filter((x) => x !== props.x + "" + props.y)
+      props.selectedCells.filter((x) => x !== props.x + "." + props.y)
     );
     setSelected(false);
   }

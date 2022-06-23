@@ -30,6 +30,9 @@ function Grid(props) {
             }
             else {
                 let helpnumber = props.helpNumbers[y].charAt(x);
+                if (helpnumber !== " ") {
+                    helpnumber = Number(helpnumber) + 1;
+                }
                 cells.push((0, jsx_runtime_1.jsx)(HelpNumber_1.default, { helpNumber: helpnumber, x: x }, x + "" + y));
             }
         // Put them in the row

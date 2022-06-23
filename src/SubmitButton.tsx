@@ -9,7 +9,7 @@ function SubmitButton(props) {
 function checkResult(solution, selectedCells) {
   console.log(solution);
   console.log(selectedCells);
-  if (solution.length == selectedCells.length) {
+  if (solution.length === selectedCells.length) {
     if (solution.sort().toString() === selectedCells.sort().toString()) {
       console.log(true);
     } else {
