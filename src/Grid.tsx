@@ -4,6 +4,8 @@ import HelpNumber from "./HelpNumber";
 
 function Grid(props) {
   const [mouseDown, setMouseDown] = useState(false);
+  let gridSize = props.gridSize;
+  console.log(gridSize);
 
   useEffect(() => {
     document.addEventListener("mousedown", onMouseDown);
@@ -20,11 +22,13 @@ function Grid(props) {
   // Build the rows in an array
 
   let rows = [];
-  for (let y = 0; y < 13; y++) {
+  let helpNumberCounterX = 3;
+  let helpNumberCounterY = 3;
+  for (let y = 0; y < gridSize + helpNumberCounterY; y++) {
     // Build the cells in an array
     let cells: Array<JSX.Element> = [];
-    for (let x = 0; x < 13; x++)
-      if (x > 2 && y > 2) {
+    for (let x = 0; x < gridSize + helpNumberCounterX; x++)
+      if (x >= helpNumberCounterX && y >= helpNumberCounterY) {
         cells.push(
           <Cell
             key={x + "" + y}

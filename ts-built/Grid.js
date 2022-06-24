@@ -9,6 +9,8 @@ const Cell_1 = __importDefault(require("./Cell"));
 const HelpNumber_1 = __importDefault(require("./HelpNumber"));
 function Grid(props) {
     const [mouseDown, setMouseDown] = (0, react_1.useState)(false);
+    let gridSize = props.gridSize;
+    console.log(gridSize);
     (0, react_1.useEffect)(() => {
         document.addEventListener("mousedown", onMouseDown);
         document.addEventListener("mouseup", onMouseUp);
@@ -21,11 +23,13 @@ function Grid(props) {
     }
     // Build the rows in an array
     let rows = [];
-    for (let y = 0; y < 13; y++) {
+    let helpNumberCounterX = 3;
+    let helpNumberCounterY = 3;
+    for (let y = 0; y < gridSize + helpNumberCounterY; y++) {
         // Build the cells in an array
         let cells = [];
-        for (let x = 0; x < 13; x++)
-            if (x > 2 && y > 2) {
+        for (let x = 0; x < gridSize + helpNumberCounterX; x++)
+            if (x >= helpNumberCounterX && y >= helpNumberCounterY) {
                 cells.push((0, jsx_runtime_1.jsx)(Cell_1.default, { x: x, y: y, setSelectedCells: props.setSelectedCells, selectedCells: props.selectedCells, mouseDown: mouseDown }, x + "" + y));
             }
             else {

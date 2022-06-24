@@ -7,7 +7,7 @@ import GenerateSolutionButton from "./GenerateSolutionButton";
 
 function App() {
   const [selectedCells, setSelectedCells] = useState([]);
-  const [solution, setSolution] = useState([
+  const solution = [
     "3.3",
     "3.4",
     "3.5",
@@ -18,8 +18,9 @@ function App() {
     "3.10",
     "3.11",
     "3.12",
-  ]);
-  const [helpNumbers, setHelpNumbers] = useState([
+  ];
+
+  const helpNumbers = [
     "     23  02  ",
     "   2410 00031  ",
     "[],[]   01009600119",
@@ -33,7 +34,9 @@ function App() {
     "12",
     "12",
     "12",
-  ]);
+  ];
+
+  const gridSize = 10;
 
   return (
     <div>
@@ -41,6 +44,7 @@ function App() {
         selectedCells={selectedCells}
         setSelectedCells={setSelectedCells}
         helpNumbers={helpNumbers}
+        gridSize={gridSize}
       ></Grid>
       <SubmitButton
         selectedCells={selectedCells}

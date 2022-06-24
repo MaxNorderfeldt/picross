@@ -12,7 +12,7 @@ const RefreshButton_1 = __importDefault(require("./RefreshButton"));
 const GenerateSolutionButton_1 = __importDefault(require("./GenerateSolutionButton"));
 function App() {
     const [selectedCells, setSelectedCells] = (0, react_1.useState)([]);
-    const [solution, setSolution] = (0, react_1.useState)([
+    const solution = [
         "3.3",
         "3.4",
         "3.5",
@@ -23,8 +23,8 @@ function App() {
         "3.10",
         "3.11",
         "3.12",
-    ]);
-    const [helpNumbers, setHelpNumbers] = (0, react_1.useState)([
+    ];
+    const helpNumbers = [
         "     23  02  ",
         "   2410 00031  ",
         "[],[]   01009600119",
@@ -38,7 +38,8 @@ function App() {
         "12",
         "12",
         "12",
-    ]);
-    return ((0, jsx_runtime_1.jsxs)("div", { children: [(0, jsx_runtime_1.jsx)(Grid_1.default, { selectedCells: selectedCells, setSelectedCells: setSelectedCells, helpNumbers: helpNumbers }), (0, jsx_runtime_1.jsx)(SubmitButton_1.default, { selectedCells: selectedCells, solution: solution }), (0, jsx_runtime_1.jsx)(RefreshButton_1.default, {}), (0, jsx_runtime_1.jsx)(GenerateSolutionButton_1.default, { selectedCells: selectedCells })] }));
+    ];
+    const gridSize = 10;
+    return ((0, jsx_runtime_1.jsxs)("div", { children: [(0, jsx_runtime_1.jsx)(Grid_1.default, { selectedCells: selectedCells, setSelectedCells: setSelectedCells, helpNumbers: helpNumbers, gridSize: gridSize }), (0, jsx_runtime_1.jsx)(SubmitButton_1.default, { selectedCells: selectedCells, solution: solution }), (0, jsx_runtime_1.jsx)(RefreshButton_1.default, {}), (0, jsx_runtime_1.jsx)(GenerateSolutionButton_1.default, { selectedCells: selectedCells })] }));
 }
 exports.default = App;
