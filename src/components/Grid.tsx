@@ -1,11 +1,13 @@
 import { FC, useEffect, useState } from "react";
 import Cell from "./Cell";
 import HelpNumber from "./HelpNumber";
+let helpNumbers = require("./helpNumbers.json");
+
+console.log(helpNumbers.helpNumbers1);
 
 function Grid(props) {
   const [mouseDown, setMouseDown] = useState(false);
   let gridSize = props.gridSize;
-  console.log(gridSize);
 
   useEffect(() => {
     document.addEventListener("mousedown", onMouseDown);
@@ -19,11 +21,10 @@ function Grid(props) {
   function onMouseUp() {
     setMouseDown(false);
   }
-  // Build the rows in an array
 
   let rows = [];
-  let helpNumberCounterX = 3;
-  let helpNumberCounterY = 3;
+  let helpNumberCounterX = 0;
+  let helpNumberCounterY = 0;
   for (let y = 0; y < gridSize + helpNumberCounterY; y++) {
     // Build the cells in an array
     let cells: Array<JSX.Element> = [];

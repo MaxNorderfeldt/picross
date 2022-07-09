@@ -21,5 +21,3 @@ A simple button to check if solution is correct
 
 Admins should be able to create a new picross, this feature should be on a seperate url(nothing confidential will be stored here)
 This tool should generate the help numbers
-
-test

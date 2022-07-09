@@ -1,49 +1,43 @@
-import { useState } from "react";
-import "./App.css";
+import React, { useEffect, useState } from "react";
+import "../styling/picross.css";
 import Grid from "./Grid";
 import SubmitButton from "./SubmitButton";
 import RefreshButton from "./RefreshButton";
 import GenerateSolutionButton from "./GenerateSolutionButton";
 
-function App() {
-  const [selectedCells, setSelectedCells] = useState([]);
-  const solution = [
-    "3.3",
-    "3.4",
-    "3.5",
-    "3.6",
-    "3.7",
-    "3.8",
-    "3.9",
-    "3.10",
-    "3.11",
-    "3.12",
-  ];
+import { getCourses } from "../api/solutionsApi";
 
-  const helpNumbers = [
-    "     23  02  ",
-    "   2410 00031  ",
-    "[],[]   01009600119",
-    " 2323",
-    "142232",
-    "123",
-    "421",
-    "123",
-    "123",
-    "12",
-    "12",
-    "12",
-    "12",
-  ];
+function Picross() {
+  const [selectedCells, setSelectedCells] = useState([]);
+  const [solution, setSolution] = useState([]);
+
+  useEffect(() => {
+    getCourses().then((courses) => setSolution(courses));
+  }, []);
+
+  console.log(solution);
+
+  //   const solution = [
+  //     "3.3",
+  //     "3.4",
+  //     "3.5",
+  //     "3.6",
+  //     "3.7",
+  //     "3.8",
+  //     "3.9",
+  //     "3.10",
+  //     "3.11",
+  //     "3.12",
+  //   ];
 
   const gridSize = 10;
 
   return (
-    <div>
+    <React.Fragment>
       <Grid
         selectedCells={selectedCells}
         setSelectedCells={setSelectedCells}
-        helpNumbers={helpNumbers}
+        // helpNumbers={helpNumbers}
         gridSize={gridSize}
       ></Grid>
       <SubmitButton
@@ -54,8 +48,8 @@ function App() {
       <GenerateSolutionButton
         selectedCells={selectedCells}
       ></GenerateSolutionButton>
-    </div>
+    </React.Fragment>
   );
 }
 
-export default App;
+export default Picross;

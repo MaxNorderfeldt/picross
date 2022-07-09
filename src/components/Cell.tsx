@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./cell.css";
+import "../styling/cell.css";
 
 function Cell(props) {
   const [selected, setSelected] = useState(false);
@@ -29,7 +29,7 @@ function Cell(props) {
   }
 
   function handleMouseEnter() {
-    if (props.mouseDown && !blocked && !selected) {
+    if (props.mouseDown && !blocked) {
       selectCell();
     }
   }
