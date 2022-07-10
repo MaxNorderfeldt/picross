@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/maxnorderfeldt.github.io/static/css/main.e2de2e3f.css",
-    "main.js": "/maxnorderfeldt.github.io/static/js/main.355ab74a.js",
-    "index.html": "/maxnorderfeldt.github.io/index.html",
-    "main.e2de2e3f.css.map": "/maxnorderfeldt.github.io/static/css/main.e2de2e3f.css.map",
-    "main.355ab74a.js.map": "/maxnorderfeldt.github.io/static/js/main.355ab74a.js.map"
+    "main.css": "/picross/static/css/main.e2de2e3f.css",
+    "main.js": "/picross/static/js/main.1759e56d.js",
+    "index.html": "/picross/index.html",
+    "main.e2de2e3f.css.map": "/picross/static/css/main.e2de2e3f.css.map",
+    "main.1759e56d.js.map": "/picross/static/js/main.1759e56d.js.map"
   },
   "entrypoints": [
     "static/css/main.e2de2e3f.css",
-    "static/js/main.355ab74a.js"
+    "static/js/main.1759e56d.js"
   ]
 }
