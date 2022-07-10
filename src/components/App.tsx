@@ -1,13 +1,12 @@
 import React from "react";
 import HelpNumber from "./HelpNumber";
 import Picross from "./Picross";
+import Route from "react-router-dom";
 
 function App() {
-  const route = window.location.pathname;
-
-  if (route === "/about") return <HelpNumber helpNumber={3} />;
   return (
     <React.Fragment>
+      f
       <Picross />
       <a href="/about">testButton</a>
     </React.Fragment>
